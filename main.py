@@ -38,8 +38,8 @@ def handle_help(message):
     bot.send_message(message.chat.id, "Это простой бот. Введите /start для начала.")
 
 
-# Обработчик команды /help
-@bot.message_handler(commands=['dbtest'])
+# Обработчик команды /dbtestcompanies
+@bot.message_handler(commands=['dbtestcompanies'])
 def handle_help(message):
     # Создаем объект курсора для выполнения SQL-запросов
     conn = pyodbc.connect(connectionString)
@@ -50,7 +50,34 @@ def handle_help(message):
 
     # Получаем результат запроса
     for row in cursor:
-        bot.send_message(message.chat.id, f"{row}")
+        bot.send_message(message.chat.id, f"CompanyName: {row[1]}\n"
+                                          f"ContactPersonName: {row[2]}\n"
+                                          f"Salary: {row[3]}\n"
+                                          f"ContactInfo: {row[6]}\n"
+                                          f"AboutCompany: {row[7]}\n"
+                                          f"ProspectiveEmployees: {row[8]}")
+
+    # Закрываем соединение
+    conn.close()
+
+
+# Обработчик команды /dbtestemployees
+@bot.message_handler(commands=['dbtestemployees'])
+def handle_help(message):
+    # Создаем объект курсора для выполнения SQL-запросов
+    conn = pyodbc.connect(connectionString)
+    cursor = conn.cursor()
+
+    # Пример выполнения запроса
+    cursor.execute('SELECT * FROM Employees')
+
+    # Получаем результат запроса
+    for row in cursor:
+        bot.send_message(message.chat.id, f"EmployeeName: {row[1]}\n"
+                                          f"DesiredSalary: {row[2]}\n"
+                                          f"JobTitle: {row[3]}\n"
+                                          f"ContactInfo: {row[6]}\n"
+                                          f"AboutEmployee: {row[7]}\n")
 
     # Закрываем соединение
     conn.close()
@@ -227,6 +254,8 @@ def about_employee(message):
     conn.commit()
     # Закрываем соединение
     conn.close()
+
+
 # endregion
 
 # Обработчик всех текстовых сообщений
