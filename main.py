@@ -10,6 +10,7 @@ connectionString = ('DRIVER={SQL Server};'
 
 # Замените 'YOUR_BOT_TOKEN' на токен вашего бота
 TOKEN = '6318182674:AAEEnk6kg86nnwcCpX3VZPz_K2G-iy_ms5M'
+
 nameCompany = ""
 nameEmployee = ""
 contactPersonName = ""
