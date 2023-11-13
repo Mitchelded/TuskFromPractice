@@ -163,7 +163,7 @@ def prospective_employees(message):
         (nameCompany,
          contactPersonName,
          salaryForEmployee,
-         message.from_user.id,
+         '@'+message.from_user.username,
          message.chat.id,
          contactInfo,
          aboutCompany,
@@ -247,7 +247,7 @@ def about_employee(message):
         (nameEmployee,
          salaryForCompany,
          jobTitle,
-         message.from_user.id,
+         '@'+message.from_user.username,
          message.chat.id,
          contactInfo,
          aboutEmployee))
