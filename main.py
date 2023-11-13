@@ -85,7 +85,7 @@ def handle_help(message):
 
 # NOTE: Добавить возможность отменить и изменить введенные данные
 # Обработчик команды /companyregistation
-# region Регистрация компании
+# region @bot.message_handler(commands=['companyregistation'])
 @bot.message_handler(commands=['companyregistation'])
 def handle_help(message):
     bot.send_message(message.chat.id, "Введите Название компании:")
@@ -177,7 +177,7 @@ def prospective_employees(message):
 
 # NOTE: Добавить возможность отменить и изменить введенные данные
 # Обработчик команды /employeeregistation
-# region Регистрация сотрудника
+# region @bot.message_handler(commands=['employeeregistation'])
 @bot.message_handler(commands=['employeeregistation'])
 def handle_help(message):
     bot.send_message(message.chat.id, "Введите ФИО:")
